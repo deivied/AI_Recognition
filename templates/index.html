@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/font.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Page | Accueil</title>
+</head>
+
+<body>
+    <style>
+      body {
+            background: url("static/img/chef.jpg") no-repeat center center fixed;
+            background-size: cover;
+      }
+    </style>
+	{{data}}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  	<div class="container-fluid">
+	    	<a class="navbar-brand text-center" href="#">
+
+	    		<img src="static/img/defar.png" alt="" width="40" height="40" class="d-inline-block align-text-top" style="border-radius: 25px;">
+	    	</a>
+	    	<a class="navbar-brand" href ="#">
+	    		<b> Face Recognition |</b> ACCUEIL
+	    	</a>
+
+	    	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      		<span class="navbar-toggler-icon"></span>
+	    	</button>
+		    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+		      	<form class="d-flex">
+		        	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		        	<button class="btn btn-outline-primary" type="submit">Search</button>
+		      	</form>
+		    </div>
+	  	</div>
+	</nav>
+	<div class="container">
+		<div class="row align-items-start">
+			<div class="col">
+				<div class="card text-center" style="width: 18rem; background-color: rgba(0, 0, 0, 0.3);">
+				  	<img src="static/img/logvert.png" class="card-img-top" alt="...">
+					<div class="card-body">
+				    	<h5 class="card-title"></h5>
+				    	<p class="card-text"> Se connecter en tant que DRH ou autre employé</p>
+				    	<p>Le serveur fonctionne parfaitement, il est {{heure}} h {{minute}} minutes et {{seconde}} secondes</p>
+				    	<a href="http://127.0.0.1:5000/login" class="btn btn-primary">Se connecter</a>
+				   	</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card text-center" style="width: 18rem; background-color: rgba(0, 0, 0, 0.3);">
+				  	<img src="static/img/exit.png" class="card-img-top" alt="...">
+				  	<div class="card-body">
+				    	<h5 class="card-title"></h5>
+				    	<p class="card-text">Pour faire le pointage des heures d'arrivée à l'entreprise.</p>
+				    	<a href="http://127.0.0.1:5000/reconnaissance" class="btn btn-primary">Heure de pointe</a>
+				    </div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card text-center" style="width: 18rem; background-color: rgba(0, 0, 0, 0.3);">
+				  	<img src="static/img/atte.png" class="card-img-top" alt="...">
+				  	<div class="card-body">
+				    	<h5 class="card-title"></h5>
+				    	<p class="card-text">Pour faire le pointage des heures de descente.</p>
+				    	<a href="http://127.0.0.1:5000/reconnaissance" class="btn btn-primary">Heure descente</a>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>   
+</body>

@@ -1,0 +1,65 @@
+<?php
+            include 'include/database.php';
+            global $bdd;
+
+            if (isset($_POST['connect'])) {
+              extract($_POST);
+              $etat = "actif";
+              if(!empty($login) AND !empty($mdp) AND !empty($profil)) {
+
+
+                $requser = $bdd->prepare("SELECT * FROM employe WHERE telephone = ? AND mdp= ? AND profil= ? AND etat= ? LIMIT 1");
+                $requser->execute(array($login, $mdp, $profil, $etat));
+                $userexist = $requser->rowCount();
+
+
+                  if($userexist == 1) {
+                    $userinfo = $requser->fetch();
+
+                    if ($profil == "admin") {
+                      $_SESSION['telephone'] = $userinfo['telephone'];
+                      $_SESSION['prenom'] = $userinfo['prenom'];
+                      $_SESSION['nom'] = $userinfo['nom'];
+                      $_SESSION['mdp'] = $userinfo['mdp'];
+                      $_SESSION['id'] = $userinfo['id_emp'];
+
+                      header("Location: admin.php");
+
+                    }
+                    if ($profil == "employee") {
+                      $_SESSION['login_emp'] = $userinfo['telephone'];
+                      $_SESSION['prenom_emp'] = $userinfo['prenom'];
+                      $_SESSION['nom_emp'] = $userinfo['nom'];
+                      $_SESSION['mdp_emp'] = $userinfo['mdp'];
+                      $_SESSION['id_emp'] = $userinfo['id_emp'];
+
+                      header("Location: employe.php");
+                    }else{
+                      echo "Ce type de compte n'existe pas : agent ou admin";
+                    }
+                  }else{
+                    echo "Ce compte n'exite pas ou est désactivé verifier encore";
+                  }
+              }else{
+                echo "Veuiller remplir tous les champs";
+              }
+            }
+          ?>
+
+          admin bi :
+
+          <?php
+          session_start();
+          $login_ad = $_SESSION['login'];
+          $prenom_ad = $_SESSION['prenom'];
+          $nom_ad = $_SESSION['nom'];
+          $id_ad = $_SESSION['id_emp']
+          ?>
+
+          <?php
+          if (isset($_POST['deconnect'])) {
+              $_SESSION = array();
+              session_destroy();
+              header("Location:../index.html");
+          }
+          ?>
